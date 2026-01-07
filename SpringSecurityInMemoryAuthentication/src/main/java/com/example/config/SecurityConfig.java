@@ -62,7 +62,7 @@ public class SecurityConfig {
         UserDetails normalUser = User.builder().username("user").password("$2a$12$nNuL3.cpWKWaAD0vrk0Npe7t8HcqixS2YEOnpqLUhBEgVpx91QCyS").roles("USER").build();
         UserDetails adminUser = User.builder().username("admin").password("$2a$12$1q2yedt0yGlZzXbsT7aFv.NMKqjHS8ZY.IzZqNwmscWRhtvvaFQHa").roles("USER", "ADMIN").build();
         UserDetails adminUser1 = User.builder().username("rahul").password("$2a$12$6cwy9Wale2EP0Id5nVBaFOQkA5Bl.qRbICsdSrJXnifmSWGGoGq7.").roles("USER", "ADMIN").build();
-        return new InMemoryUserDetailsManager(normalUser, adminUser);
+        return new InMemoryUserDetailsManager(normalUser, adminUser, adminUser1);
     }
 
     @Bean
