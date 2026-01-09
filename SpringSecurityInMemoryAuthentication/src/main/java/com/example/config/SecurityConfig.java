@@ -38,7 +38,8 @@ public class SecurityConfig {
                             .loginPage("/login")
                             .defaultSuccessUrl("/",true)
                             .permitAll();
-                })*/.formLogin(httpSecurityFormLoginConfigurer -> httpSecurityFormLoginConfigurer.loginPage("/login").successHandler(new AuthenticationSuccessHandler() {
+                })*/.
+                formLogin(httpSecurityFormLoginConfigurer -> httpSecurityFormLoginConfigurer.loginPage("/login").successHandler(new AuthenticationSuccessHandler() {
                     @Override
                     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
                         boolean isAdmin = authentication.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"));
@@ -49,9 +50,11 @@ public class SecurityConfig {
                             response.sendRedirect("/user");
                         }
                     }
-                }).permitAll()).logout(logout -> {
+                }).permitAll())
+                .logout(logout -> {
                     logout.logoutSuccessUrl("/logout-success").permitAll();
-                }).exceptionHandling(exception->{
+                })
+                .exceptionHandling(exception->{
                     exception.accessDeniedPage("/403");
                 })
                 .build();
