@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Home</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1d2671, #c33764);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Card */
+        .home-card {
+            width: 500px;
+            padding: 45px 40px;
+            background: #ffffff;
+            border-radius: 16px;
+            text-align: center;
+
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 0.8s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .home-card h1 {
+            margin-bottom: 12px;
+            color: #2c2c2c;
+        }
+
+        .home-card p {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+
+            font-size: 15px;
+            font-weight: 500;
+            color: white;
+            transition: 0.3s ease;
+        }
+
+        .btn-user {
+            background: linear-gradient(135deg, #36d1dc, #5b86e5);
+        }
+
+        .btn-admin {
+            background: linear-gradient(135deg, #ff512f, #dd2476);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer text */
+        .footer-text {
+            margin-top: 25px;
+            font-size: 12px;
+            color: #999;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="home-card">
+    <h1>Welcome to Home Page</h1>
+    <p class="logged-user">
+        Logged in as:
+        <strong sec:authentication="name"></strong>
+    </p>
+    <p>
+        This application demonstrates a modern Spring Boot setup with
+        role-based authentication and a custom UI.
+    </p>
+
+    <div class="btn-group">
+        <a th:href="@{/user}">
+            <button class="btn btn-user">User Dashboard</button>
+        </a>
+        <a th:href="@{/admin}">
+            <button class="btn btn-admin">Admin Dashboard</button>
+        </a>
+    </div>
+
+    <div class="footer-text">
+        © 2026 Spring Boot Application
+    </div>
+</div>
+
+</body>
+</html>
