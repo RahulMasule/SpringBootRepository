@@ -9,6 +9,15 @@
         <outputRelativeToContentRoot value="true" />
         <module name="SpringSecurityDemo" />
       </profile>
+      <profile name="Annotation profile for SpringSecurityDBAuthentication" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar" />
+        </processorPath>
+        <module name="SpringSecurityDBAuthentication" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="SpringSecurityDaoAuthentication" target="17" />
@@ -16,6 +25,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="SpringSecurityDBAuthentication" options="-parameters" />
       <module name="SpringSecurityDaoAuthentication" options="-parameters" />
       <module name="SpringSecurityDemo" options="-parameters" />
     </option>

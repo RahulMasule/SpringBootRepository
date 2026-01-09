@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>Admin Dashboard</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #232526, #414345);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Admin Card */
+        .admin-card {
+            width: 520px;
+            padding: 42px 38px;
+            background-color: #ffffff;
+            border-radius: 16px;
+            text-align: center;
+
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+            animation: slideUp 0.8s ease;
+            border-top: 6px solid #c62828;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .admin-card h1 {
+            margin-bottom: 10px;
+            color: #2c2c2c;
+        }
+
+        .admin-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            margin-bottom: 18px;
+
+            background-color: #c62828;
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .admin-card p {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 28px;
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+
+            font-size: 14px;
+            font-weight: 500;
+            color: white;
+            transition: 0.3s ease;
+        }
+
+        .btn-home {
+            background: linear-gradient(135deg, #616161, #424242);
+        }
+
+        .btn-logout {
+            background: linear-gradient(135deg, #e53935, #b71c1c);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .footer-text {
+            margin-top: 25px;
+            font-size: 12px;
+            color: #999;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="admin-card">
+    <h1>Admin Dashboard</h1>
+
+    <p class="logged-user">
+        Logged in as:
+        <strong sec:authentication="name"></strong>
+    </p>
+
+    <div class="admin-badge">
+        ADMIN ACCESS
+    </div>
+
+    <p>
+        This page is restricted to administrators and allows
+        management and system-level operations.
+    </p>
+
+    <div class="btn-group">
+        <a th:href="@{/home}">
+            <button class="btn btn-home">Home</button>
+        </a>
+
+        <a th:href="@{/user}">
+            <button class="btn btn-home">User</button>
+        </a>
+
+        <a th:href="@{/logout-success}">
+            <button class="btn btn-logout">Logout</button>
+        </a>
+    </div>
+
+    <div class="footer-text">
+        © 2026 Admin Control Panel
+    </div>
+</div>
+
+</body>
+</html>

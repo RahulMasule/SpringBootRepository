@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Card */
+        .login-card {
+            width: 380px;
+            padding: 40px 35px;
+            background: #ffffff;
+            border-radius: 14px;
+            text-align: center;
+
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+            animation: fadeInUp 0.7s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-card h2 {
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .login-card p {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 30px;
+        }
+
+        /* Input Group */
+        .input-group {
+            position: relative;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 10px;
+            border: none;
+            border-bottom: 2px solid #ccc;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .input-group label {
+            position: absolute;
+            top: 12px;
+            left: 10px;
+            color: #aaa;
+            font-size: 14px;
+            pointer-events: none;
+            transition: 0.3s;
+        }
+
+        .input-group input:focus,
+        .input-group input:valid {
+            border-bottom-color: #667eea;
+        }
+
+        .input-group input:focus + label,
+        .input-group input:valid + label {
+            top: -8px;
+            font-size: 12px;
+            color: #667eea;
+        }
+
+        /* Button */
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 30px;
+
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.5);
+        }
+
+        /* Messages */
+        .message {
+            margin-top: 15px;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .error {
+            color: #d32f2f;
+        }
+
+        .success {
+            color: #388e3c;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="login-card">
+    <h2>Welcome Back</h2>
+    <p>Login to access your dashboard</p>
+
+    <form th:action="@{/login}" method="post">
+
+        <div class="input-group">
+            <input type="text" name="username" required />
+            <label>Username</label>
+        </div>
+
+        <div class="input-group">
+            <input type="password" name="password" required />
+            <label>Password</label>
+        </div>
+
+        <button type="submit">Login</button>
+
+        <div class="message error" th:if="${param.error}">
+            Invalid username or password
+        </div>
+
+        <div class="message success" th:if="${param.logout}">
+            You have been logged out successfully
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>
