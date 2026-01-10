@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/SpringSecurityInMemoryAuthentication/pom.xml" />
         <option value="$PROJECT_DIR$/SpringSecurityDaoAuthentication1/pom.xml" />
         <option value="$PROJECT_DIR$/SpringSecurityDBAuthentication/pom.xml" />
+        <option value="$PROJECT_DIR$/SpringSecurityJwtAPIAuthentication/pom.xml" />
       </list>
     </option>
   </component>

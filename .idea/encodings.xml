@@ -4,5 +4,6 @@
     <file url="file://$PROJECT_DIR$/SpringSecurityDBAuthentication/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/SpringSecurityDaoAuthentication/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/SpringSecurityInMemoryAuthentication/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SpringSecurityJwtAPIAuthentication/src/main/java" charset="UTF-8" />
   </component>
 </project>
